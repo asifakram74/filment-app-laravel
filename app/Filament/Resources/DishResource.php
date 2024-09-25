@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\DishResource\Pages;
 use App\Filament\Resources\DishResource\RelationManagers;
+use App\Filament\Resources\DishResource\Widgets\DishStatsOverview;
 use App\Models\Dish;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -17,7 +18,8 @@ class DishResource extends Resource
 {
     protected static ?string $model = Dish::class;
     protected static ?string $recordTitleAttribute = 'name';
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationGroup = 'menu';
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     public static function form(Form $form): Form
     {
@@ -32,6 +34,11 @@ class DishResource extends Resource
     {
         return static::getModel()::count();
     }
+public static function getWidgets(): array
+{
+  return [ DishStatsOverview::class];
+}
+
     public static function table(Table $table): Table
     {
         return $table

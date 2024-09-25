@@ -16,4 +16,10 @@ class ListDishes extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+    protected function getHeaderWidgets(): array
+    {
+     return [
+DishResource\Widgets\DishStatsOverview::class,
+     ];
+    }
 }
